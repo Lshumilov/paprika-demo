@@ -162,6 +162,15 @@
     padding: .6em .9em; border-radius: calc(var(--v-radius) - 4px); background: var(--v-canvas-85); box-shadow: 0 0 0 1px var(--v-hair); }
   .bank__second { margin-top: var(--v-5); display: grid; grid-template-columns: 9rem 1fr; gap: var(--v-4); align-items: center; font-size: var(--v-t-sm); color: var(--v-ink-soft); }
   .bank__second img { width: 100%; aspect-ratio: 4 / 3; object-fit: cover; border-radius: calc(var(--v-radius) - 4px); }
+  .halls { display: grid; grid-template-columns: minmax(0, .78fr) minmax(0, 1.22fr); gap: var(--v-4); margin-bottom: var(--v-8); }
+  .hall { position: relative; margin: 0; border-radius: var(--v-radius); overflow: hidden; box-shadow: var(--v-e2); background: var(--v-surface); }
+  .hall img { position: absolute; inset: 0; width: 100%; height: 100%; object-fit: cover; }
+  .hall--tall { grid-row: 1 / span 2; }
+  .hall--wide { aspect-ratio: 16 / 9; }
+  .hall figcaption { position: absolute; left: var(--v-4); bottom: var(--v-4); z-index: 1; display: grid; gap: .1em; padding: .6em .9em;
+    border-radius: calc(var(--v-radius) - 4px); background: var(--v-canvas-85); box-shadow: 0 0 0 1px var(--v-hair); }
+  .hall figcaption b { font-family: var(--v-font-display); font-weight: 600; font-size: var(--v-t-lg); text-transform: uppercase; letter-spacing: .01em; line-height: 1.1; }
+  .hall figcaption span { font-size: var(--v-t-sm); color: var(--v-accent); font-weight: 600; }
   .rows li { padding: var(--v-5) 0; border-top: 1px solid var(--v-hair); display: grid; gap: var(--v-2); }
   .rows li:last-child { border-bottom: 1px solid var(--v-hair); }
   .rows q { font-family: var(--v-font-text); font-weight: 600; font-size: var(--v-t-lg); line-height: 1.35; quotes: "«" "»"; text-wrap: pretty; }
@@ -174,6 +183,10 @@
   @media (max-width: 860px) {
     .bank__head { margin-bottom: var(--v-6); }
     .bank__grid { grid-template-columns: 1fr; gap: var(--v-6); }
+    .halls { grid-template-columns: 1fr; gap: var(--v-3); margin-bottom: var(--v-6); }
+    .hall--tall { grid-row: auto; aspect-ratio: 4 / 5; }
+    .hall--wide { aspect-ratio: 4 / 3; }
+    .hall figcaption b { font-size: var(--v-t-base); }
     .turn { padding: var(--v-5); }
     .rows q { font-size: var(--v-t-base); }
     .bank__second { grid-template-columns: 7rem 1fr; }
@@ -318,7 +331,7 @@
     <a class="bar__mark" href="#top"><i aria-hidden="true"></i>Паприка</a>
     <nav class="bar__right" aria-label="Быстрые ссылки">
       <a class="bar__tel" href="tel:+73912110544">+7 (391) 211-05-44</a>
-      <a class="v-btn" href="tel:+73912110544">Забронировать</a>
+      <a class="v-btn" href="https://vk.com/24paprika" target="_blank" rel="noopener">Забронировать</a>
     </nav>
   </header>
 
@@ -349,7 +362,7 @@
           <h1 class="v-display v-display--xl" data-v-kinetic="lines">Кафе-бар в центре Красноярска: банкеты и блюда на углях</h1>
           <p class="v-lede">Днём бизнес-ланч, вечером стейки и шашлык на углях, а для юбилея или корпоратива – зал на Мира.</p>
           <div class="hero__cta">
-            <a class="v-btn" href="tel:+73912110544">Забронировать</a>
+            <a class="v-btn" href="https://vk.com/24paprika" target="_blank" rel="noopener">Забронировать</a>
             <a class="hero__tel" href="#ugli">или посмотрите <b>меню на углях</b></a>
           </div>
         </div>
@@ -380,8 +393,8 @@
             </li>
           </ol>
           <div class="shift__cta">
-            <a class="v-btn" href="tel:+73912110544">Забронировать</a>
-            <span>Позвоните: на сколько гостей и к какому часу – подберём стол.</span>
+            <a class="v-btn" href="https://vk.com/24paprika" target="_blank" rel="noopener">Забронировать</a>
+            <span>Напишите во ВКонтакте или позвоните: на сколько гостей и к какому часу – подберём стол.</span>
           </div>
         </div>
 
@@ -398,38 +411,40 @@
       </div>
     </section>
 
-    <!-- 2 · БАНКЕТЫ: зал со шторкой, слова гостей дословно с Яндекс Карт, как заказать -->
+    <!-- 2 · БАНКЕТЫ: три зала с вместимостью (фото от заведения 19.10), слова гостей дословно, как заказать -->
     <section class="v-section v-section--tight" data-v-act="flow" data-v-drift="#18171a" id="bankety" aria-label="Банкеты">
       <div class="v-wrap">
         <div class="bank__head" data-v-in data-v-stagger="70">
           <span class="v-label">Банкеты и праздники</span>
           <h2 class="v-display v-display--lg">Юбилей, день рождения, корпоратив&nbsp;– в&nbsp;зале на Мира</h2>
-          <p>Блюда на углях, закуски и салаты из меню, стол на всех гостей. Дату, число гостей и меню обсуждаем по телефону заранее.</p>
+          <p>Три зала: деревянный – до 45 гостей, веранда с камином – до 30, цоколь – на 15–20 человек. Дату, число гостей и меню обсуждаем заранее.</p>
+        </div>
+        <div class="halls">
+          <figure class="hall hall--tall" data-v-in data-v-in-self>
+            <img src="assets/hall-wood.webp" alt="Деревянный зал: тёмные арки, красные диваны, столики вдоль стены" width="900" height="1200" loading="lazy" decoding="async">
+            <figcaption><b>Деревянный зал</b><span>до 45 гостей</span></figcaption>
+          </figure>
+          <figure class="hall hall--wide" data-v-reveal="left" data-v-reveal-at="0.12 0.45">
+            <img src="assets/hall-veranda.webp" alt="Веранда: камин, окна в пол, длинный стол под белой скатертью" width="1200" height="900" loading="lazy" decoding="async">
+            <figcaption><b>Веранда с камином</b><span>до 30 гостей</span></figcaption>
+          </figure>
+          <figure class="hall hall--wide" data-v-in data-v-in-self>
+            <img src="assets/hall-cokol.webp" alt="Цоколь: угловой диван, накрытый банкетный стол, цветной свет" width="1200" height="900" loading="lazy" decoding="async">
+            <figcaption><b>Цоколь</b><span>15–20 гостей · только банкет или игры</span></figcaption>
+          </figure>
         </div>
         <div class="bank__grid">
-          <div>
-            <figure class="bank__fig" data-v-reveal="left" data-v-reveal-at="0.22 0.55">
-              <img src="assets/zal-svadba.webp" alt="Зал кафе, украшенный к свадьбе: стол молодых, цветы и свечи" width="1200" height="756" loading="lazy" decoding="async">
-              <figcaption>Зал «Паприки», оформленный к свадьбе. Фото с карточки кафе.</figcaption>
-            </figure>
-            <div class="bank__second" data-v-in data-v-in-self>
-              <img src="assets/zal-kamin.webp" alt="Второй зал с камином и столами под белыми скатертями" width="1200" height="771" loading="lazy" decoding="async">
-              <span>Зал с камином – для компании поменьше.</span>
-            </div>
-          </div>
-          <div>
-            <ul class="rows" data-v-in data-v-stagger="80">
-              <li><q>Гостей было около 30 человек. Очень понравилось и все гости остались довольны!!!</q><cite>Светлана, юбилей · отзыв на Яндекс Картах, декабрь 2022</cite></li>
-              <li><q>Наш стол расположили вдоль витражных окон, отличный вид из окна.</q><cite>Марина Шугаева, юбилей мамы · август 2026</cite></li>
-              <li><q>Отмечали новогодний корпоратив, коллегам очень понравилось!</q><cite>Родион Викторович · январь 2025</cite></li>
-            </ul>
-            <div class="turn" data-v-in data-v-in-self>
-              <span class="v-label">Как заказать банкет</span>
-              <p class="turn__text">Позвоните и назовите <b>дату, число гостей и формат</b> – юбилей, день рождения, корпоратив. Подберём зал и вместе составим меню: гости пишут, что определялись с меню прямо с менеджером.</p>
-              <div class="cta">
-                <a class="v-btn" href="tel:+73912110544">Забронировать</a>
-                <a href="https://vk.com/24paprika" target="_blank" rel="noopener">или напишите во ВКонтакте</a>
-              </div>
+          <ul class="rows" data-v-in data-v-stagger="80">
+            <li><q>Гостей было около 30 человек. Очень понравилось и все гости остались довольны!!!</q><cite>Светлана, юбилей · отзыв на Яндекс Картах, декабрь 2022</cite></li>
+            <li><q>Наш стол расположили вдоль витражных окон, отличный вид из окна.</q><cite>Марина Шугаева, юбилей мамы · август 2026</cite></li>
+            <li><q>Отмечали новогодний корпоратив, коллегам очень понравилось!</q><cite>Родион Викторович · январь 2025</cite></li>
+          </ul>
+          <div class="turn" data-v-in data-v-in-self>
+            <span class="v-label">Как заказать банкет</span>
+            <p class="turn__text">Напишите нам во ВКонтакте или позвоните и назовите <b>дату, число гостей и формат</b> – юбилей, день рождения, корпоратив. Подберём зал и вместе составим меню: гости пишут, что определялись с меню прямо с менеджером.</p>
+            <div class="cta">
+              <a class="v-btn" href="https://vk.com/24paprika" target="_blank" rel="noopener">Забронировать</a>
+              <a href="tel:+73912110544">или позвоните: 211-05-44</a>
             </div>
           </div>
         </div>
@@ -497,7 +512,7 @@
               <li><b>Быстро и в центре</b><span>«Отличное место для обеда для офисных работников в центре города» – Ольга П.</span></li>
               <li><b>Время и цена</b><span>Уточнить по телефону</span></li>
             </ul>
-            <a class="v-btn" href="tel:+73912110544">Забронировать</a>
+            <a class="v-btn" href="https://vk.com/24paprika" target="_blank" rel="noopener">Забронировать</a>
           </div>
           <figure class="menu__soup"><img src="assets/d-sup.webp" alt="Суп-пюре из красного перца с сырными клецками" width="720" height="720" loading="lazy"></figure>
         </aside>
@@ -519,7 +534,7 @@
             <h2 class="v-display v-display--md">Что ещё есть в «Паприке»</h2>
             <p>Всё из списка – с карточки кафе на картах. Летом работает веранда.</p>
             <div class="atm__pics">
-              <img src="assets/zal.webp" alt="Общий зал кафе" width="870" height="720" loading="lazy">
+              <img src="assets/hall-wood-2.webp" alt="Деревянный зал: арки и диваны-кабинки" width="1200" height="900" loading="lazy">
               <img src="assets/kokteil.webp" alt="Коктейль с долькой апельсина в баре" width="800" height="1200" loading="lazy">
             </div>
           </div>
@@ -580,13 +595,13 @@
         <div class="close" data-v-spotlight>
           <div class="close__inner">
             <div data-v-cue="0.04">
-              <h2 class="v-display v-display--lg">Позвоните&nbsp;– подберём стол или зал</h2>
+              <h2 class="v-display v-display--lg">Напишите или позвоните&nbsp;– подберём стол или зал</h2>
               <p class="v-lede">Скажите, на сколько гостей и к какому часу. Для банкета – дату и формат, меню составим вместе.</p>
               <div class="close__cta">
-                <a class="v-btn" href="tel:+73912110544" data-v-magnet="0.22" data-v-rise="0">Забронировать</a>
+                <a class="v-btn" href="https://vk.com/24paprika" target="_blank" rel="noopener" data-v-magnet="0.22" data-v-rise="0">Забронировать</a>
                 <a class="close__tel" href="tel:+73912110544">+7 (391) 211-05-44</a>
               </div>
-              <p class="close__hint">Удобнее писать – <a href="https://vk.com/24paprika" target="_blank" rel="noopener">сообщение в группу ВКонтакте</a>.</p>
+              <p class="close__hint">Кнопка открывает сообщения группы «Паприки» во ВКонтакте. Удобнее голосом – звоните по номеру выше.</p>
             </div>
             <div class="close__meta" data-v-cue="0.1">
               <span><b>Часы работы</b>Ежедневно 12:00–24:00</span>
