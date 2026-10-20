@@ -15,8 +15,7 @@
 <meta property="og:image:width" content="1200">
 <meta property="og:image:height" content="630">
 <meta name="twitter:card" content="summary_large_image">
-<link rel="preload" as="image" href="assets/hero.webp" fetchpriority="high" media="(min-width: 861px)">
-<link rel="preload" as="image" href="assets/hero-m.webp" fetchpriority="high" media="(max-width: 860px)">
+<link rel="preload" as="image" href="assets/logo.webp" fetchpriority="high">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Oswald:wght@500;600&family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
@@ -128,8 +127,18 @@
   .clock__fill { position: absolute; left: 0; top: 50%; height: 1px; width: calc(var(--v-p, 0) * 100%); background: var(--v-accent); }
   .clock__lbl { position: absolute; top: 100%; margin-top: .2em; font-size: var(--v-t-xs); color: var(--v-ink-soft); font-variant-numeric: tabular-nums; }
   .clock__lbl--close { right: 0; }
+  /* логотип заведения вместо фото блюда (просьба Паприки 20.10): справа на тёмном фоне, свет углей за ним */
+  .hero { --logo-w: clamp(20rem, 40vw, 50rem); }
+  .hero__photo--logo { --hx: 72%; }
+  .hero__photo--logo .hero__stack img { left: auto; right: 3vw; top: 0; width: var(--logo-w); height: 100%; object-fit: contain; object-position: 50% 52%; }
+  /* текст слева не заходит под логотип */
+  .v-page .hero .hero__copy, .v-page .hero .shift { max-width: min(42rem, calc(100vw - var(--logo-w) - 3vw - 2 * var(--v-gutter) - 1.5rem)); }
+  .hero__photo--logo .hero__ember { opacity: calc(.35 + .65 * clamp(0, (var(--v-p, 0) - .1) / .5, 1)); }
   @media (max-width: 860px) {
     .hero__photo { top: auto; height: 44svh; --hx: 50%; --hy: 55%; }
+    .hero__photo--logo { --hx: 50%; }
+    .hero__photo--logo .hero__stack img { left: 6vw; right: 6vw; width: 88vw; object-position: 50% 45%; }
+    .v-page .hero .hero__copy, .v-page .hero .shift { max-width: none; }
     .hero__ember { background: radial-gradient(60% 50% at 50% 60%, rgb(255 120 40 / .42), rgb(255 80 20 / .14) 55%, transparent 75%); }
     .hero__wash { background: linear-gradient(to bottom, var(--v-canvas) 0%, transparent 22%), linear-gradient(to top, rgb(21 21 23 / .75), transparent 32%); }
     .v-page .hero__copy { top: 5rem; bottom: auto; max-width: none; }
@@ -340,14 +349,10 @@
     <!-- 1 · УЗНАВАНИЕ: стейк «Паприка», оффер; по скроллу день идёт к вечеру и угли разгораются -->
     <section id="top" data-v-act="pin" data-v-span="3" data-v-drift="#151517" aria-label="Кафе-бар Паприка">
       <div data-v-stage class="hero">
-        <div class="hero__photo">
+        <div class="hero__photo hero__photo--logo">
           <div class="v-layer hero__stack" data-v-parallax="-0.25">
-            <picture>
-              <source media="(max-width: 860px)" srcset="assets/hero-m.webp">
-              <img src="assets/hero.webp" alt="Стейк «Паприка» с лавашом, печёным картофелем и томатным соусом на тёмной тарелке" width="1920" height="1082" fetchpriority="high">
-            </picture>
+            <img src="assets/logo.webp" alt="Логотип Paprika Grill-bar" width="859" height="438" fetchpriority="high">
           </div>
-          <div class="hero__dusk" aria-hidden="true"></div>
           <div class="hero__ember" aria-hidden="true"></div>
           <div class="hero__wash" aria-hidden="true"></div>
         </div>
