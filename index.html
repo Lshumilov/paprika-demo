@@ -233,6 +233,8 @@
     .dish { width: 74vw; }
     .dish:nth-child(even) { transform: none; }
   }
+  /* на телефоне лента листается пальцем: прилипание к карточкам – с отступом от края экрана */
+  .v-swipe #ugli [data-v-stage] { scroll-padding-inline: var(--v-gutter); }
 
   /* ---- акт 4 · меню с ценами и бизнес-ланч ---------------------------------------- */
   .menu { display: grid; grid-template-columns: minmax(0, 1.5fr) minmax(0, .65fr); gap: var(--v-9); align-items: start; }
